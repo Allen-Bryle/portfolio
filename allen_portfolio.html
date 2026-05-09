@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allen Bryle De Sagun — Digital Project Manager & Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0f;
+    --bg2: #141418;
+    --bg3: #1c1c23;
+    --accent: #f0a500;
+    --accent2: #e8580a;
+    --text: #f0ede8;
+    --muted: #8a8790;
+    --border: rgba(255,255,255,0.08);
+    --card: #18181f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(13,13,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1rem;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); font-size: 0.875rem;
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--accent); color: #000;
+    padding: 0.5rem 1.25rem; border-radius: 4px;
+    font-size: 0.875rem; font-weight: 500;
+    text-decoration: none; transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(240,165,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.5rem;
+    border: 1px solid rgba(240,165,0,0.3);
+    padding: 0.4rem 0.9rem; border-radius: 2px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--accent); border-radius: 50%;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: normal;
+    -webkit-text-stroke: 1px var(--accent);
+    color: transparent;
+  }
+  .hero-sub {
+    color: var(--muted); font-size: 1.05rem;
+    max-width: 480px; margin-bottom: 2.5rem;
+    font-weight: 300; line-height: 1.8;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #000;
+    padding: 0.875rem 2rem; border-radius: 4px;
+    font-size: 0.9rem; font-weight: 600;
+    text-decoration: none; letter-spacing: 0.02em;
+    transition: opacity 0.2s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-outline {
+    border: 1px solid var(--border); color: var(--text);
+    padding: 0.875rem 2rem; border-radius: 4px;
+    font-size: 0.9rem; font-weight: 400;
+    text-decoration: none; letter-spacing: 0.02em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--muted); }
+
+  /* HERO STATS */
+  .hero-right { display: flex; flex-direction: column; gap: 1.5rem; }
+  .stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--border); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
+  }
+  .stat-box {
+    background: var(--card);
+    padding: 1.75rem 1.5rem;
+  }
+  .stat-box .num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem; font-weight: 800;
+    color: var(--accent); line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-box .label {
+    font-size: 0.8rem; color: var(--muted);
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .role-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .tag {
+    font-size: 0.75rem; letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: 2px;
+    border: 1px solid;
+  }
+  .tag-orange { border-color: rgba(240,165,0,0.4); color: var(--accent); }
+  .tag-gray { border-color: var(--border); color: var(--muted); }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 3rem; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-label::after {
+    content: ''; flex: 0 0 40px; height: 1px; background: var(--accent); opacity: 0.4;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+  .section-title em { font-style: normal; color: var(--accent); }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .about-text p {
+    color: var(--muted); font-size: 1.05rem;
+    line-height: 1.9; margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .skills-block { margin-top: 2rem; }
+  .skills-group { margin-bottom: 1.75rem; }
+  .skills-group-label {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.75rem;
+  }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pill {
+    font-size: 0.8rem; padding: 0.35rem 0.85rem;
+    border-radius: 3px; border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .pill-accent {
+    border-color: rgba(240,165,0,0.35);
+    color: var(--accent);
+    background: rgba(240,165,0,0.05);
+  }
+
+  /* EXPERIENCE TIMELINE */
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before {
+    content: ''; position: absolute;
+    left: 0; top: 0.5rem; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .tl-item {
+    position: relative; padding-bottom: 2.5rem; padding-left: 1.75rem;
+  }
+  .tl-item::before {
+    content: ''; position: absolute; left: -1.5rem; top: 0.4rem;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--bg);
+  }
+  .tl-date {
+    font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.4rem;
+  }
+  .tl-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--text); margin-bottom: 0.2rem;
+  }
+  .tl-company {
+    font-size: 0.85rem; color: var(--muted); margin-bottom: 0.9rem;
+  }
+  .tl-list { list-style: none; padding: 0; }
+  .tl-list li {
+    font-size: 0.9rem; color: var(--muted); font-weight: 300;
+    padding: 0.3rem 0; padding-left: 1rem;
+    position: relative; line-height: 1.6;
+  }
+  .tl-list li::before {
+    content: '—'; position: absolute; left: 0;
+    color: var(--accent); font-size: 0.75rem;
+  }
+
+  /* PORTFOLIO */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .port-card {
+    background: var(--card);
+    padding: 2rem;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .port-card:hover { background: var(--bg3); }
+  .port-icon {
+    font-size: 1.5rem; margin-bottom: 1.25rem;
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 6px;
+  }
+  .port-icon-pm { background: rgba(240,165,0,0.12); }
+  .port-icon-qa { background: rgba(232,88,10,0.12); }
+  .port-icon-design { background: rgba(255,255,255,0.05); }
+  .port-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    margin-bottom: 0.5rem; color: var(--text);
+  }
+  .port-card p {
+    font-size: 0.85rem; color: var(--muted);
+    line-height: 1.7; font-weight: 300;
+  }
+  .port-tag {
+    display: inline-block; margin-top: 1rem;
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent);
+    border-bottom: 1px solid rgba(240,165,0,0.3);
+    padding-bottom: 1px;
+  }
+
+  /* LOGO SHOWCASE */
+  .logo-showcase {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
+    margin-top: 3rem;
+  }
+  .logo-cell {
+    background: var(--card);
+    padding: 2rem;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100px;
+    transition: background 0.3s;
+  }
+  .logo-cell:hover { background: var(--bg3); }
+  .logo-cell span {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem; font-weight: 700;
+    color: var(--muted); letter-spacing: 0.04em;
+    text-align: center;
+  }
+
+  /* SKILLS BARS */
+  .skills-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+  }
+  .skill-bar-item { margin-bottom: 1.25rem; }
+  .skill-bar-label {
+    display: flex; justify-content: space-between;
+    font-size: 0.85rem; color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .skill-bar-label span:last-child { color: var(--accent); font-weight: 500; }
+  .skill-bar-track {
+    height: 3px; background: var(--border);
+    border-radius: 2px; overflow: hidden;
+  }
+  .skill-bar-fill {
+    height: 100%; border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    transition: width 1s ease;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .contact-info .info-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .info-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--border); border-radius: 4px;
+    font-size: 1rem;
+  }
+  .info-item .info-label {
+    font-size: 0.75rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.2rem;
+  }
+  .info-item .info-val {
+    font-size: 0.95rem; color: var(--text); font-weight: 300;
+  }
+  .contact-cta {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2.5rem;
+  }
+  .contact-cta h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem; font-weight: 700;
+    margin-bottom: 0.75rem; color: var(--text);
+  }
+  .contact-cta p {
+    font-size: 0.9rem; color: var(--muted);
+    font-weight: 300; margin-bottom: 1.75rem; line-height: 1.8;
+  }
+  .avail-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.75rem; color: #4ade80;
+    margin-bottom: 1.25rem;
+  }
+  .avail-badge::before {
+    content: ''; width: 6px; height: 6px;
+    background: #4ade80; border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+  }
+
+  /* WEBSITE CASE STUDIES */
+  .ws-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .ws-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+  .ws-card:hover {
+    border-color: rgba(240,165,0,0.3);
+    transform: translateY(-3px);
+  }
+  .ws-preview {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .ws-browser-bar {
+    display: flex; align-items: center; gap: 0.3rem;
+    padding: 0.5rem 0.75rem;
+    background: #2a2a32;
+  }
+  .ws-preview.ws-light .ws-browser-bar { background: #ddd; }
+  .ws-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .ws-url {
+    font-size: 0.6rem; color: rgba(255,255,255,0.35);
+    margin-left: 0.5rem; font-family: monospace;
+  }
+  .ws-preview.ws-light .ws-url { color: #888; }
+  .ws-screen { min-height: 140px; overflow: hidden; }
+  .ws-info { padding: 1.25rem; }
+  .ws-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.65rem; }
+  .ws-tag {
+    font-size: 0.65rem; padding: 0.2rem 0.55rem;
+    border-radius: 2px; border: 1px solid var(--border);
+    color: var(--muted); letter-spacing: 0.04em;
+  }
+  .ws-tag-nft { border-color: rgba(168,85,247,0.4); color: #c084fc; }
+  .ws-tag-hr { border-color: rgba(59,130,246,0.4); color: #60a5fa; }
+  .ws-tag-ecom { border-color: rgba(240,165,0,0.4); color: var(--accent); }
+  .ws-tag-health { border-color: rgba(74,222,128,0.4); color: #4ade80; }
+  .ws-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--text); margin-bottom: 0.5rem;
+  }
+  .ws-desc {
+    font-size: 0.82rem; color: var(--muted);
+    line-height: 1.7; font-weight: 300; margin-bottom: 0.75rem;
+  }
+  .ws-meta {
+    font-size: 0.75rem; color: var(--muted);
+    display: flex; align-items: center; gap: 1rem;
+  }
+  @media (max-width: 900px) {
+    .ws-grid { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 901px) and (max-width: 1100px) {
+    .ws-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem; color: var(--muted);
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px; background: var(--border);
+    margin: 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2.5rem; }
+    .hero::before { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .contact-grid, .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .logo-showcase { grid-template-columns: repeat(2, 1fr); }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">AB<span>.</span>DESAGUN</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:desagunallenbryle26@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Available for New Projects</div>
+    <h1>Allen Bryle<br>De <em>Sagun</em></h1>
+    <p class="hero-sub">Digital Project Manager bridging design and delivery — 6+ years turning complex web projects into seamless, user-focused experiences.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">View My Work ↓</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="num">6+</div>
+        <div class="label">Years Experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">3</div>
+        <div class="label">Core Disciplines</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">50+</div>
+        <div class="label">Logos Designed</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">∞</div>
+        <div class="label">Pixels Pushed</div>
+      </div>
+    </div>
+    <div class="role-tags">
+      <span class="tag tag-orange">Project Management</span>
+      <span class="tag tag-orange">Quality Assurance</span>
+      <span class="tag tag-gray">UI/UX Design</span>
+      <span class="tag tag-gray">WordPress</span>
+      <span class="tag tag-gray">Logo Design</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2 class="section-title">Designer turned<br><em>Project Leader</em></h2>
+      <p>I started as a UI/UX designer with a deep passion for craft — wireframing, prototyping, and building websites that actually connect with people. Over six years, I evolved into a full-stack project manager who understands the work from the inside out.</p>
+      <p>At <strong>Bear Digital Non-Voices Outsourcing Services</strong>, I manage web design and development projects end-to-end — coordinating designers, developers, and clients while keeping quality, timelines, and communication on track.</p>
+      <p>What sets me apart: I don't just manage tasks. I understand <strong>design systems, front-end code, QA standards, and branding</strong> — which means faster problem-solving and less lost-in-translation between teams.</p>
+      <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+        <a href="mailto:desagunallenbryle26@gmail.com" class="btn-primary" style="font-size:0.85rem; padding: 0.65rem 1.4rem;">Email Me</a>
+        <a href="tel:+639999650276" class="btn-outline" style="font-size:0.85rem; padding: 0.65rem 1.4rem;">+63 999 965 0276</a>
+      </div>
+    </div>
+    <div class="skills-block">
+      <div class="skills-group">
+        <div class="skills-group-label">Project Management</div>
+        <div class="skill-pills">
+          <span class="pill pill-accent">Agile / Scrum</span>
+          <span class="pill pill-accent">Task Prioritization</span>
+          <span class="pill pill-accent">Sprint Planning</span>
+          <span class="pill pill-accent">Client Communication</span>
+          <span class="pill pill-accent">Risk Management</span>
+          <span class="pill pill-accent">Cross-team Coordination</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-label">Quality Assurance</div>
+        <div class="skill-pills">
+          <span class="pill pill-accent">QA Processes</span>
+          <span class="pill pill-accent">KPI Setting</span>
+          <span class="pill pill-accent">Defect Tracking</span>
+          <span class="pill pill-accent">UX Testing</span>
+          <span class="pill pill-accent">Team Mentoring</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-label">Design & Development</div>
+        <div class="skill-pills">
+          <span class="pill">Figma</span>
+          <span class="pill">Adobe XD</span>
+          <span class="pill">Photoshop</span>
+          <span class="pill">Illustrator</span>
+          <span class="pill">HTML / CSS</span>
+          <span class="pill">WordPress</span>
+          <span class="pill">Shopify</span>
+          <span class="pill">Bootstrap</span>
+          <span class="pill">Framer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career Journey</div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+    <div>
+      <h2 class="section-title">Where I've<br><em>Made Impact</em></h2>
+      <p style="color: var(--muted); font-weight: 300; font-size: 1rem; line-height: 1.9; margin-bottom: 2rem;">All roles at <span style="color: var(--text);">Bear Digital Non-Voices Outsourcing Services</span> — growing from designer to project leader through execution, ownership, and results.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2024 — Present</div>
+        <div class="tl-role">Associate Project Manager</div>
+        <div class="tl-company">Bear Digital Non-Voices Outsourcing Services</div>
+        <ul class="tl-list">
+          <li>Managed multiple web design & dev projects end-to-end</li>
+          <li>Main point of contact for clients, designers, and developers</li>
+          <li>Established workflow systems improving team accountability</li>
+          <li>Facilitated sprints, check-ins, and progress reporting</li>
+          <li>Early risk identification reducing delivery blockers</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Oct 2023 — 2024</div>
+        <div class="tl-role">Quality Assurance Manager</div>
+        <div class="tl-company">Bear Digital Non-Voices Outsourcing Services</div>
+        <ul class="tl-list">
+          <li>Led QA across multiple projects, reducing post-launch issues</li>
+          <li>Established KPIs and testing standards for the team</li>
+          <li>Mentored QA and design members, improving output quality</li>
+          <li>Collaborated with devs ensuring UX and functional consistency</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2020 — 2023</div>
+        <div class="tl-role">UI/UX & Product Design Team Lead</div>
+        <div class="tl-company">Bear Digital Non-Voices Outsourcing Services</div>
+        <ul class="tl-list">
+          <li>Led designers delivering web and mobile interfaces</li>
+          <li>Designed wireframes and prototypes with Figma & Adobe XD</li>
+          <li>Launched WordPress and Shopify sites (Elementor, PageFly)</li>
+          <li>Maintained consistency across branding and product assets</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Nov 2018 — 2020</div>
+        <div class="tl-role">UI/UX & Product Experience Designer</div>
+        <div class="tl-company">Bear Digital Non-Voices Outsourcing Services</div>
+        <ul class="tl-list">
+          <li>Designed wireframes, mockups, and prototypes</li>
+          <li>Built responsive websites with HTML, CSS, Bootstrap</li>
+          <li>Created branding assets, marketing visuals, and print materials</li>
+          <li>Produced promo videos and social media content</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WORK / PORTFOLIO -->
+<section id="work">
+  <div class="section-label">Selected Work</div>
+  <h2 class="section-title">What I <em>Deliver</em></h2>
+
+  <div class="portfolio-grid">
+    <div class="port-card">
+      <div class="port-icon port-icon-pm" style="font-size:1.4rem;">📋</div>
+      <h3>Project Management</h3>
+      <p>End-to-end delivery of web projects — coordinating teams, managing timelines, aligning stakeholders, and keeping quality on track through structured workflows and sprint cycles.</p>
+      <span class="port-tag">Agile · Scrum · Client Communication</span>
+    </div>
+    <div class="port-card">
+      <div class="port-icon port-icon-qa" style="font-size:1.4rem;">🔍</div>
+      <h3>Quality Assurance</h3>
+      <p>Built and led QA processes from the ground up — establishing KPIs, testing standards, and defect-resolution workflows that reduced post-launch issues across the team.</p>
+      <span class="port-tag">QA · Testing · KPIs · Mentoring</span>
+    </div>
+    <div class="port-card">
+      <div class="port-icon port-icon-design" style="font-size:1.4rem;">🎨</div>
+      <h3>UI/UX Design</h3>
+      <p>Wireframes, prototypes, and full responsive interfaces for web and mobile. From concept to launch on WordPress, Shopify, and custom HTML/CSS builds.</p>
+      <span class="port-tag">Figma · WordPress · Shopify · XD</span>
+    </div>
+    <div class="port-card" style="grid-column: span 1;">
+      <div class="port-icon port-icon-design" style="font-size:1.4rem;">🌐</div>
+      <h3>Website Design</h3>
+      <p>Crafted conversion-focused, visually distinctive websites — like the AVENTURE outdoor brand site and Near Tribes NFT web experience — from concept to launch.</p>
+      <span class="port-tag">Web Design · Elementor · PageFly</span>
+    </div>
+    <div class="port-card">
+      <div class="port-icon port-icon-pm" style="font-size:1.4rem;">🏷️</div>
+      <h3>Logo & Brand Design</h3>
+      <p>50+ logos for brands across industries — from real estate (C21 Victoria), community platforms (RTS Community), to lifestyle brands (Chair Trends, Cosmic Sports).</p>
+      <span class="port-tag">Branding · Identity · Illustrator</span>
+    </div>
+    <div class="port-card">
+      <div class="port-icon port-icon-qa" style="font-size:1.4rem;">📱</div>
+      <h3>NFT & Web3 Projects</h3>
+      <p>Designed and helped deliver fully functional web experiences for blockchain projects like Near Tribes and Bored Puzzel, handling design systems and QA.</p>
+      <span class="port-tag">Web3 · NFT · UX · QA</span>
+    </div>
+  </div>
+
+  <!-- WEBSITE CASE STUDIES -->
+  <div style="margin-top: 5rem;">
+    <div class="section-label">Live Website Projects</div>
+    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 2.5rem; font-weight: 300;">Real, fully-launched websites designed and delivered for clients — spanning NFT, health, e-commerce, and HR industries.</p>
+
+    <div class="ws-grid">
+
+      <div class="ws-card">
+        <div class="ws-preview ws-dark">
+          <div class="ws-browser-bar">
+            <span class="ws-dot" style="background:#ff5f57"></span>
+            <span class="ws-dot" style="background:#febc2e"></span>
+            <span class="ws-dot" style="background:#28c840"></span>
+            <span class="ws-url">neartribes.io</span>
+          </div>
+          <div class="ws-screen" style="background: linear-gradient(160deg, #1a0a2e 0%, #0d1a0e 60%, #1a2a0a 100%);">
+            <div style="padding: 1.5rem;">
+              <div style="font-size: 0.55rem; color: #7fff7f; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; opacity: 0.8;">Welcome to</div>
+              <div style="font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: #c8ff78; line-height: 1.1; margin-bottom: 0.3rem;">NEAR TRIBES</div>
+              <div style="font-size: 0.45rem; color: #9bffb0; letter-spacing: 0.1em; opacity: 0.7; margin-bottom: 0.9rem;">THE NEW NATIVES OF NEARVERSE</div>
+              <div style="display: flex; gap: 0.4rem; margin-bottom: 1rem;">
+                <div style="background: rgba(200,255,120,0.2); border: 1px solid rgba(200,255,120,0.4); border-radius: 2px; padding: 0.2rem 0.5rem; font-size: 0.4rem; color: #c8ff78;">MEET YOUR TRIBE</div>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.3rem;">
+                <div style="background: rgba(255,255,255,0.05); border-radius: 3px; height: 2.5rem; display: flex; align-items: center; justify-content: center; font-size: 0.38rem; color: #9bffb0; text-align: center; padding: 0.2rem;">THE HUNTER</div>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 3px; height: 2.5rem; display: flex; align-items: center; justify-content: center; font-size: 0.38rem; color: #9bffb0; text-align: center; padding: 0.2rem;">THE SHAMAN</div>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 3px; height: 2.5rem; display: flex; align-items: center; justify-content: center; font-size: 0.38rem; color: #9bffb0; text-align: center; padding: 0.2rem;">THE CHIEFTAIN</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ws-info">
+          <div class="ws-tags"><span class="ws-tag ws-tag-nft">NFT / Web3</span><span class="ws-tag">WordPress</span><span class="ws-tag">UI/UX</span></div>
+          <h3 class="ws-title">Near Tribes</h3>
+          <p class="ws-desc">NFT community platform for the NEARVERSE — designed the full web experience including character showcases, mission sections, and community onboarding flow.</p>
+          <div class="ws-meta">
+            <span>🌐 Live & Active</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ws-card">
+        <div class="ws-preview ws-dark">
+          <div class="ws-browser-bar">
+            <span class="ws-dot" style="background:#ff5f57"></span>
+            <span class="ws-dot" style="background:#febc2e"></span>
+            <span class="ws-dot" style="background:#28c840"></span>
+            <span class="ws-url">boredpuzzles.io</span>
+          </div>
+          <div class="ws-screen" style="background: #f5f0e8;">
+            <div style="background: #1a1a2e; padding: 0.4rem 0.75rem; display: flex; align-items: center; justify-content: space-between;">
+              <div style="font-family: 'Syne', sans-serif; font-size: 0.55rem; font-weight: 800; color: #fff;">BORED PUZZLES</div>
+              <div style="display: flex; gap: 0.4rem;">
+                <div style="font-size: 0.35rem; color: rgba(255,255,255,0.5);">ABOUT</div>
+                <div style="font-size: 0.35rem; color: rgba(255,255,255,0.5);">HOW IT WORKS</div>
+                <div style="font-size: 0.35rem; color: rgba(255,255,255,0.5);">PUZZLES</div>
+              </div>
+            </div>
+            <div style="background: #f5c842; padding: 0.3rem 0.75rem; font-size: 0.38rem; color: #1a1a2e; font-weight: 700; text-align: center;">BORED PUZZLES IS MINTING! &nbsp; MINT HERE</div>
+            <div style="padding: 0.75rem; background: #f5f0e8;">
+              <div style="font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 800; color: #1a1a2e; margin-bottom: 0.3rem;">WELCOME TO BORED PUZZLES</div>
+              <div style="font-size: 0.38rem; color: #555; line-height: 1.5; margin-bottom: 0.6rem;">Play-to-win puzzle games where each puzzle is part of its own NFT Collection.</div>
+              <div style="display: flex; gap: 0.4rem;">
+                <div style="background: #e8580a; color: #fff; border-radius: 2px; padding: 0.25rem 0.5rem; font-size: 0.38rem; font-weight: 700;">PLAY OUR PUZZLES</div>
+                <div style="background: transparent; border: 1px solid #1a1a2e; color: #1a1a2e; border-radius: 2px; padding: 0.25rem 0.5rem; font-size: 0.38rem;">DISCORD</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ws-info">
+          <div class="ws-tags"><span class="ws-tag ws-tag-nft">NFT / Play-to-Win</span><span class="ws-tag">WordPress</span><span class="ws-tag">UX Design</span></div>
+          <h3 class="ws-title">Bored Puzzel</h3>
+          <p class="ws-desc">Play-to-win puzzle game platform built on blockchain. Designed the full site experience with minting UI, puzzle pages, community sections, and how-it-works flows.</p>
+          <div class="ws-meta"><span>🌐 Live & Active</span></div>
+        </div>
+      </div>
+
+      <div class="ws-card">
+        <div class="ws-preview ws-light">
+          <div class="ws-browser-bar" style="background:#e8e8e8;">
+            <span class="ws-dot" style="background:#ff5f57"></span>
+            <span class="ws-dot" style="background:#febc2e"></span>
+            <span class="ws-dot" style="background:#28c840"></span>
+            <span class="ws-url" style="color:#555;">virtualbears.com</span>
+          </div>
+          <div class="ws-screen" style="background: #fff;">
+            <div style="background: #fff; padding: 0.4rem 0.75rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eee;">
+              <div style="font-family: 'Syne', sans-serif; font-size: 0.55rem; font-weight: 800; color: #1a1a2e;">Virtual Bears</div>
+              <div style="background: #2563eb; color: #fff; border-radius: 2px; padding: 0.2rem 0.4rem; font-size: 0.35rem;">CONTACT US</div>
+            </div>
+            <div style="padding: 0.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; align-items: center;">
+              <div>
+                <div style="font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 800; color: #1a1a2e; line-height: 1.2; margin-bottom: 0.3rem;">SET YOUR WORKFORCE TO AUTOPILOT</div>
+                <div style="font-size: 0.35rem; color: #666; margin-bottom: 0.4rem; line-height: 1.5;">From recruitment to onboarding and employee management.</div>
+                <div style="background: #2563eb; color: #fff; border-radius: 2px; padding: 0.2rem 0.4rem; font-size: 0.35rem; display: inline-block;">LEARN MORE</div>
+              </div>
+              <div style="background: linear-gradient(135deg, #dbeafe 0%, #ede9fe 100%); border-radius: 4px; height: 3.5rem; display: flex; align-items: center; justify-content: center;">
+                <div style="font-size: 0.5rem; color: #3b82f6; font-weight: 700; text-align: center;">HR Platform</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ws-info">
+          <div class="ws-tags"><span class="ws-tag ws-tag-hr">HR / SaaS</span><span class="ws-tag">WordPress</span><span class="ws-tag">Elementor</span></div>
+          <h3 class="ws-title">Virtual Bears</h3>
+          <p class="ws-desc">HR and workforce management platform site. Designed to position their autopilot recruitment and onboarding services with a clean, professional corporate look.</p>
+          <div class="ws-meta"><span>🌐 Live & Active</span></div>
+        </div>
+      </div>
+
+      <div class="ws-card">
+        <div class="ws-preview ws-light">
+          <div class="ws-browser-bar" style="background:#e8e8e8;">
+            <span class="ws-dot" style="background:#ff5f57"></span>
+            <span class="ws-dot" style="background:#febc2e"></span>
+            <span class="ws-dot" style="background:#28c840"></span>
+            <span class="ws-url" style="color:#555;">arthomehub.com</span>
+          </div>
+          <div class="ws-screen" style="background: #fff;">
+            <div style="background: #fff; padding: 0.4rem 0.75rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eee;">
+              <div style="display: flex; align-items: center; gap: 0.3rem;">
+                <div style="width: 10px; height: 10px; background: #e8580a; border-radius: 1px;"></div>
+                <div style="font-family: 'Syne', sans-serif; font-size: 0.5rem; font-weight: 800; color: #1a1a2e;">ART <span style="color:#e8580a;">HOMEHUB</span></div>
+              </div>
+              <div style="background: #e8580a; color: #fff; border-radius: 2px; padding: 0.2rem 0.4rem; font-size: 0.3rem;">GET FREE SHIPPING</div>
+            </div>
+            <div style="background: #1a1a1a; padding: 0.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; align-items: center;">
+              <div>
+                <div style="font-size: 0.35rem; color: rgba(255,255,255,0.6); margin-bottom: 0.2rem; text-transform: uppercase; letter-spacing: 0.1em;">Jewelry Storage</div>
+                <div style="font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 0.4rem;">STORE YOUR VALUABLE JEWELRY</div>
+                <div style="background: #e8580a; color: #fff; border-radius: 2px; padding: 0.2rem 0.4rem; font-size: 0.3rem; display: inline-block;">SHOP NOW</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.05); border-radius: 3px; height: 3rem; display: flex; align-items: center; justify-content: center;">
+                <div style="font-size: 0.45rem; color: rgba(255,255,255,0.4);">Product Image</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ws-info">
+          <div class="ws-tags"><span class="ws-tag ws-tag-ecom">E-Commerce</span><span class="ws-tag">Shopify</span><span class="ws-tag">PageFly</span></div>
+          <h3 class="ws-title">Art HomeHub</h3>
+          <p class="ws-desc">Shopify e-commerce store for premium home storage and furniture. Designed the product collection layout, hero sections, and CTA flows to drive conversions.</p>
+          <div class="ws-meta"><span>🌐 Live & Active</span></div>
+        </div>
+      </div>
+
+      <div class="ws-card">
+        <div class="ws-preview ws-light">
+          <div class="ws-browser-bar" style="background:#e8e8e8;">
+            <span class="ws-dot" style="background:#ff5f57"></span>
+            <span class="ws-dot" style="background:#febc2e"></span>
+            <span class="ws-dot" style="background:#28c840"></span>
+            <span class="ws-url" style="color:#555;">whitlockorthodontics.com</span>
+          </div>
+          <div class="ws-screen" style="background: #fff;">
+            <div style="background: #5b2d8e; padding: 0.4rem 0.75rem; display: flex; align-items: center; justify-content: space-between;">
+              <div style="font-family: 'Syne', sans-serif; font-size: 0.5rem; font-weight: 700; color: #fff;">Whitlock Orthodontics</div>
+              <div style="display: flex; gap: 0.3rem;">
+                <div style="background: rgba(255,255,255,0.2); color: #fff; border-radius: 2px; padding: 0.15rem 0.35rem; font-size: 0.3rem;">SCHEDULE</div>
+                <div style="background: #fff; color: #5b2d8e; border-radius: 2px; padding: 0.15rem 0.35rem; font-size: 0.3rem; font-weight: 700;">PATIENT LOGIN</div>
+              </div>
+            </div>
+            <div style="padding: 0.6rem 0.75rem; background: linear-gradient(135deg, #f3e8ff 0%, #fff 100%);">
+              <div style="font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 800; color: #5b2d8e; line-height: 1.2; margin-bottom: 0.2rem;">Time to Rock Your Smile</div>
+              <div style="font-size: 0.38rem; color: #7c3aed; margin-bottom: 0.5rem;">Whitlock Orthodontics</div>
+              <div style="display: flex; gap: 0.3rem;">
+                <div style="background: rgba(255,255,255,0.8); border: 1px solid #c4b5fd; border-radius: 3px; padding: 0.3rem; text-align: center; font-size: 0.32rem; color: #5b2d8e; flex: 1;">Virtual Consult</div>
+                <div style="background: rgba(255,255,255,0.8); border: 1px solid #c4b5fd; border-radius: 3px; padding: 0.3rem; text-align: center; font-size: 0.32rem; color: #5b2d8e; flex: 1;">Remote Monitoring</div>
+                <div style="background: rgba(255,255,255,0.8); border: 1px solid #c4b5fd; border-radius: 3px; padding: 0.3rem; text-align: center; font-size: 0.32rem; color: #5b2d8e; flex: 1;">Kids & Adults</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ws-info">
+          <div class="ws-tags"><span class="ws-tag ws-tag-health">Healthcare</span><span class="ws-tag">WordPress</span><span class="ws-tag">Elementor</span></div>
+          <h3 class="ws-title">Whitlock Orthodontics</h3>
+          <p class="ws-desc">Professional healthcare website for a dental/orthodontics practice. Built trust-focused design with service highlights, Invisalign promotions, and patient portal integration.</p>
+          <div class="ws-meta"><span>🌐 Live & Active</span></div>
+        </div>
+      </div>
+
+      <div class="ws-card">
+        <div class="ws-preview ws-light">
+          <div class="ws-browser-bar" style="background:#e8e8e8;">
+            <span class="ws-dot" style="background:#ff5f57"></span>
+            <span class="ws-dot" style="background:#febc2e"></span>
+            <span class="ws-dot" style="background:#28c840"></span>
+            <span class="ws-url" style="color:#555;">716synergy.com</span>
+          </div>
+          <div class="ws-screen" style="background: #fff;">
+            <div style="background: #fff; padding: 0.4rem 0.75rem; border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: space-between;">
+              <div style="font-family: 'Syne', sans-serif; font-size: 0.5rem; font-weight: 800; color: #2d6a2d;">Synergy</div>
+              <div style="background: #4ade80; color: #14532d; border-radius: 2px; padding: 0.2rem 0.4rem; font-size: 0.3rem; font-weight: 700;">SCHEDULE APPT</div>
+            </div>
+            <div style="padding: 0.6rem 0.75rem; background: linear-gradient(135deg, #f0fdf4 0%, #fff 100%);">
+              <div style="font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 800; color: #166534; line-height: 1.2; margin-bottom: 0.25rem;">SYNERGY</div>
+              <div style="font-size: 0.42rem; color: #4ade80; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 0.5rem;">NUTRITION AND WELLNESS</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem;">
+                <div style="background: rgba(74,222,128,0.1); border-radius: 3px; padding: 0.3rem; font-size: 0.33rem; color: #166534;">Nutrition Response Testing</div>
+                <div style="background: rgba(74,222,128,0.1); border-radius: 3px; padding: 0.3rem; font-size: 0.33rem; color: #166534;">Infrared Sauna Therapy</div>
+                <div style="background: rgba(74,222,128,0.1); border-radius: 3px; padding: 0.3rem; font-size: 0.33rem; color: #166534;">Supplements</div>
+                <div style="background: rgba(74,222,128,0.1); border-radius: 3px; padding: 0.3rem; font-size: 0.33rem; color: #166534;">CBD Oil</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ws-info">
+          <div class="ws-tags"><span class="ws-tag ws-tag-health">Health & Wellness</span><span class="ws-tag">WordPress</span><span class="ws-tag">Elementor</span></div>
+          <h3 class="ws-title">716-Synergy</h3>
+          <p class="ws-desc">Nutrition and wellness clinic website featuring services like infrared sauna therapy, nutrition response testing, and supplements — with a clean, nature-inspired aesthetic.</p>
+          <div class="ws-meta"><span>🌐 Live & Active</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LOGO GRID -->
+  <div style="margin-top: 4rem;">
+    <div class="section-label">Logo Design Portfolio</div>
+    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; font-weight: 300;">A selection of brand identities designed for clients across industries.</p>
+    <div class="logo-showcase">
+      <div class="logo-cell"><span>Sato Den</span></div>
+      <div class="logo-cell"><span>C21 Victoria</span></div>
+      <div class="logo-cell"><span>AlaEh Adventures</span></div>
+      <div class="logo-cell"><span>RTS Community</span></div>
+      <div class="logo-cell"><span>Principal Mortgages</span></div>
+      <div class="logo-cell"><span>Chair Trends</span></div>
+      <div class="logo-cell"><span>Thrill Spatial Mile</span></div>
+      <div class="logo-cell"><span>Stamp Camp</span></div>
+      <div class="logo-cell"><span>Lightwave Scenic</span></div>
+      <div class="logo-cell"><span>EzDrop</span></div>
+      <div class="logo-cell"><span>Ferris</span></div>
+      <div class="logo-cell"><span>RD Furnishings</span></div>
+      <div class="logo-cell"><span>Virtual Panda</span></div>
+      <div class="logo-cell"><span>Formo Fine Deco</span></div>
+      <div class="logo-cell"><span>Art HomeHub</span></div>
+      <div class="logo-cell" style="background: rgba(240,165,0,0.04);">
+        <span style="color: var(--accent); font-size:0.75rem; letter-spacing: 0.08em;">+ More Available</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <h2 class="section-title">Skills & <em>Proficiency</em></h2>
+  <div class="skills-grid">
+    <div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Project Coordination</span><span>95%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Client Communication</span><span>92%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Quality Assurance</span><span>90%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Team Leadership</span><span>88%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Process Optimization</span><span>87%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:87%"></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Figma / Adobe XD</span><span>93%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:93%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>WordPress / Shopify</span><span>88%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>HTML / CSS / Bootstrap</span><span>82%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Adobe Photoshop / Illustrator</span><span>90%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Logo & Brand Design</span><span>92%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's Work Together</div>
+  <div class="contact-grid">
+    <div>
+      <h2 class="section-title">Ready to<br><em>Start a Project?</em></h2>
+      <p style="color: var(--muted); font-size: 1rem; font-weight: 300; line-height: 1.9; margin-bottom: 2.5rem;">Whether you need a project managed, a website QA'd, or a brand designed from scratch — I bring design sensibility and operational discipline to every engagement.</p>
+      <div class="contact-info">
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">Phone</div>
+            <div class="info-val">+63 999 965 0276</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">✉️</div>
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-val">desagunallenbryle26@gmail.com</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Location</div>
+            <div class="info-val">Subic, Agoncillo, Batangas, PH</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-cta">
+      <div class="avail-badge">Available for freelance & full-time</div>
+      <h3>Let's Build Something Great</h3>
+      <p>I'm open to freelance projects, full-time roles, and long-term partnerships. Drop me a message and I'll get back to you within 24 hours.</p>
+      <a href="mailto:desagunallenbryle26@gmail.com" class="btn-primary" style="width: 100%; justify-content: center; text-align: center; display: flex;">
+        Send Me a Message →
+      </a>
+      <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border);">
+        <p style="font-size: 0.8rem; color: var(--muted); margin: 0;">BS Information Technology · 2017–2018</p>
+        <p style="font-size: 0.8rem; color: var(--muted); margin: 0; margin-top: 0.2rem;">Lemery Colleges, Batangas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Allen Bryle De Sagun</span>
+  <span style="color: var(--border)">·</span>
+  <span>Digital Project Manager · UI/UX Designer · Brand Identity</span>
+  <span style="color: var(--border)">·</span>
+  <span>Batangas, Philippines</span>
+</footer>
+
+</body>
+</html>
